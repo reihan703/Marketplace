@@ -29,7 +29,7 @@ public class User {
     private String password;
 
     @Column(name = "phone")
-    private int phone;
+    private String phone;
     
     @Column(name = "city")
     private String city;
@@ -69,11 +69,11 @@ public class User {
         this.password = password;
     }
 
-    public int getPhone() {
+    public String getPhone() {
         return phone;
     }
 
-    public void setPhone(int phone) {
+    public void setPhone(String phone) {
         this.phone = phone;
     }
 
