@@ -50,6 +50,9 @@ public class LoginController {
         }
 
         session.setAttribute("id", obj.getId());
+        session.setAttribute("phone", obj.getId());
+        session.setAttribute("city", obj.getId());
+        session.setAttribute("address", obj.getId());
         session.setAttribute("email", obj.getEmail());
         session.setAttribute("name", obj.getName());
         session.setAttribute("loggedIn", true);

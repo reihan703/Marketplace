@@ -15,6 +15,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 /**
  *
@@ -37,10 +38,13 @@ public class RegisterController {
 
     @PostMapping("/register")
     public String store(@ModelAttribute("user") User user, 
-            HttpServletRequest request) throws Exception {
-
-        userInterface.register(user);
-
+            HttpServletRequest request, RedirectAttributes ra) throws Exception {
+        try{
+            userInterface.register(user);
+        }
+        catch (Exception e){
+            return "redirect:/register";
+        }
         return "redirect:/login";
     }
 
