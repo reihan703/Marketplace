@@ -7,12 +7,15 @@ import com.Project1.Project1Market.models.InventoryBuy;
 import com.Project1.Project1Market.models.InventorySell;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class MainController {
@@ -36,6 +39,7 @@ public class MainController {
 
         return "profile";
     }
+
 
     @GetMapping("/home/profile/create-sell")
     public String create_sell(Model model) {
@@ -75,5 +79,6 @@ public class MainController {
         return "redirect:/";
     }
     
+
     
 }
