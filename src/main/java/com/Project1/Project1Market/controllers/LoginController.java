@@ -50,8 +50,12 @@ public class LoginController {
         }
 
         session.setAttribute("id", obj.getId());
+        session.setAttribute("phone", obj.getPhone());
+        session.setAttribute("city", obj.getCity());
+        session.setAttribute("address", obj.getAddress());
         session.setAttribute("email", obj.getEmail());
         session.setAttribute("name", obj.getName());
+        session.setAttribute("password", obj.getPassword());
         session.setAttribute("loggedIn", true);
 
         return "redirect:/";

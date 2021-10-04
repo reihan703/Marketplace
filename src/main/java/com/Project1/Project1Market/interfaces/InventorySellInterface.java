@@ -5,7 +5,6 @@
  */
 package com.Project1.Project1Market.interfaces;
 
-import com.Project1.Project1Market.models.InventoryBuy;
 import com.Project1.Project1Market.models.InventorySell;
 import java.util.List;
 
@@ -13,10 +12,9 @@ import java.util.List;
  *
  * @author Victorio Adam
  */
-public interface InventoryBuyInterface {
-    List<InventoryBuy> getAll();
-    
-    void store(InventoryBuy inventoryBuy, String );
-    InventoryBuy getById(long id);
-    void delete(long id, long user_id);
+public interface InventorySellInterface {
+    List<InventorySell> getAll();  
+    void store(InventorySell inventorySell);
+    InventorySell getById(long id);
+    void delete(long user_id, long id);
 }

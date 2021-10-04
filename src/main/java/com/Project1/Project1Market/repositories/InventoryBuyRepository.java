@@ -5,10 +5,17 @@
  */
 package com.Project1.Project1Market.repositories;
 
+import com.Project1.Project1Market.models.InventoryBuy;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
 /**
  *
  * @author Victorio Adam
  */
-public class InventoryBuyRepository {
+@Repository
+public interface InventoryBuyRepository extends JpaRepository<InventoryBuy, Long>{
+
+    public void deleteById(long user_id, long id);
     
 }

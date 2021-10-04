@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="../includes/base :: css"></head>
+<body>
+    <header th:replace="../includes/base :: navbar"></header>
+    <div class="create-item" style="padding: 10% 0;">
+        <div class="card create-item-form text-center">
+            <div class="create-item-form-body" id="create-item-form-body">
+                <div class="create-item-form-session" id="create-item-form-session">
+                    
+                    <br><br>
+                    <form method="POST" action="#" th:action="@{/item/store-sell}" th:object="${sell_order}">
+                        <input type="hidden" th:field="*{id}" th:object="${user}"/>
+                    <div class="input-group input-group-sm-lg mb-3 mx-5" style="width: 85%;">
+                        <span class="input-group-text" id="inputGroup-sizing-sm" style="background-color: #f9f9f9; border: none;">Foto Barang</span>
+                        <input type="file" class="form-control" id="barang-foto-input" style="box-shadow: none; background-color: #f9f9f9; border: none; padding-left: 60px;" placeholder="Masukkan Foto" required>
+                    </div>
+
+                    <div class="input-group input-group-sm-lg mb-3 mx-5" style="width: 85%;">
+                        <span class="input-group-text" id="inputGroup-sizing-sm" style="background-color: #f9f9f9; border: none; padding-right: 17px;">Nama Barang</span>
+                        <input th:field="*{item_Name}" type="text" class="form-control" id="barang-name-input" style="box-shadow: none; background-color: #f9f9f9; border: none; padding-left: 30px;" placeholder="Nama Barang" required>
+                    </div>
+
+                    <div class="input-group input-group-sm-lg mb-3 mx-5" style="width: 85%;">
+                        <span class="input-group-text" id="inputGroup-sizing-sm" style="background-color: #f9f9f9; border: none; padding-right: 17px;">Deskripsi </span>
+                        <textarea th:field="*{item_Desc}" class="form-control" name="barang-desc-input" id="barang-desc-input" style="box-shadow: none;padding-left: 70px;border: none;word-wrap: break-word; background-color: #f9f9f9; overflow-y: scroll;" placeholder="Deskripsi Barang" required></textarea>
+                    </div>
+
+                    <div class="input-group input-group-sm-lg mb-3 mx-5" style="width: 85%;">
+                        <span class="input-group-text" id="inputGroup-sizing-sm" style="background-color: #f9f9f9; border: none; padding-right: 17px;">Harga Barang</span>
+                        <input th:field="*{item_price}" type="number" class="form-control" id="barang-harga-input" style="box-shadow: none; background-color: #f9f9f9; border: none; padding-left: 27px;" placeholder="Masukkan Harga" required>
+                    </div>
+                    <button type="submit" class="btn-create-submit" id="btn-create-submit" style="float: right; width: 20%; margin-right: 20px;">Submit</button>
+                    </form>
+                    <br><br>
+                </div>
+            </div>
+        </div>
+        <div th:replace="../includes/base  :: footer"></div>
+        <div th:replace="../includes/base  :: scripts"></div>
+</body>
+</html>
