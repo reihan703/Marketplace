@@ -8,134 +8,55 @@ and open the template in the editor.
     <head th:replace="../includes/base :: css"></head>
     <body>
         <header th:replace="../includes/base :: navbar"></header>
-        <div class="main">
+        <div class="main" style="justify-content: center;">
         <div class="side-content s1">
             <label class="label-item-sell" for="table-item-sell">Want to Sell</label>
-            <div class="left-small-content" style="background-color: cyan; overflow-y: scroll; height: 86vh;">
+            <div class="left-small-content" style="background-color: #f3f3f3;height: 86vh; overflow-y: scroll;">
+                
                 <table class="table">
                     <tbody>
+                    
                     <tr>
                         <td>
                             <div class="table-item-sell" style="display: flex;">
                                 <div class="item-sell-img">
-                                    <img src="../css/images/banteng_real.jpg" width="50px" height="50px" alt="">
+                                    <img src="/css/images/banteng_real.jpg"alt="">
                                 </div>
                                 <div class="list-item-sell">
-                                    <a href="#kerbaujantan" class="item-sell-name" style="text-decoration: underline; padding-left: 10px;">Kerbau Jantan</a><br>
+                                    <a href="viewitem.html" class="item-sell-name" style="text-decoration: underline; padding-left: 10px;">Kerbau Jantan</a><br>
                                     <label for="item-sell-name" class="item-sell-price">Rp 20.000.000</label>
                                 </div>
                             </div>
-                            <a href="#buy" style="float: right;"><i class="fas fa-shopping-cart"></i> Buy</a>
+                            <h1 id="cp-info-buy" style="display:none">CP : Slamet - 0895234123412</h1><span>
+                            <button type="button" id="buy-href" href="#buy" style="float: right;"><i class="fas fa-shopping-cart"></i> Buy</button></span>
+                            
+                            <script>
+                                let cpInfoBuy = document.getElementById("cp-info-buy");
+                                let buyHref = document.getElementById("buy-href");
+
+                                buyHref.addEventListener("click", function(){
+                                    if(cpInfoBuy.style.display === 'none'){
+                                        cpInfoBuy.style.display ='block';
+                                    }
+                                })
+                            </script>
                         </td>
                     </tr>
+
                     <tr>
                         <td>
-                            <div class="table-item-sell" style="display: flex;">
-                                <div class="item-sell-img">
-                                    <img src="../css/images/banteng_real.jpg" width="50px" height="50px" alt="">
+                            <div class="table-item-buy" style="display: flex;">
+                                <div class="item-buy-img">
+                                    <img src="/css/images/banteng_real.jpg"alt="">
                                 </div>
-                                <div class="list-item-sell">
-                                    <a href="#kerbaujantan" class="item-sell-name" style="text-decoration: underline; padding-left: 10px;">Kerbau Jantan</a><br>
-                                    <label for="item-sell-name" class="item-sell-price">Rp 20.000.000</label>
-                                </div>
-                            </div>
-                            <a href="#buy" style="float: right;"><i class="fas fa-shopping-cart"></i> Buy</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="table-item-sell" style="display: flex;">
-                                <div class="item-sell-img">
-                                    <img src="../css/images/banteng_real.jpg" width="50px" height="50px" alt="">
-                                </div>
-                                <div class="list-item-sell">
-                                    <a href="#kerbaujantan" class="item-sell-name" style="text-decoration: underline; padding-left: 10px;">Kerbau Jantan</a><br>
-                                    <label for="item-sell-name" class="item-sell-price">Rp 20.000.000</label>
+                                <div class="list-item-buy">
+                                    <a href="viewitem.html" class="item-buy-name" style="text-decoration: underline; padding-left: 10px;">Kerbau Jantan</a><br>
+                                    <label for="item-buy-name" class="item-sell-price">Rp 10.000.000</label>
                                 </div>
                             </div>
-                            <a href="#buy" style="float: right;"><i class="fas fa-shopping-cart"></i> Buy</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="table-item-sell" style="display: flex;">
-                                <div class="item-sell-img">
-                                    <img src="../css/images/banteng_real.jpg" width="50px" height="50px" alt="">
-                                </div>
-                                <div class="list-item-sell">
-                                    <a href="#kerbaujantan" class="item-sell-name" style="text-decoration: underline; padding-left: 10px;">Kerbau Jantan</a><br>
-                                    <label for="item-sell-name" class="item-sell-price">Rp 20.000.000</label>
-                                </div>
-                            </div>
-                            <a href="#buy" style="float: right;"><i class="fas fa-shopping-cart"></i> Buy</a>
-                        </td>
-                    </tr><tr>
-                        <td>
-                            <div class="table-item-sell" style="display: flex;">
-                                <div class="item-sell-img">
-                                    <img src="../css/images/banteng_real.jpg" width="50px" height="50px" alt="">
-                                </div>
-                                <div class="list-item-sell">
-                                    <a href="#kerbaujantan" class="item-sell-name" style="text-decoration: underline; padding-left: 10px;">Kerbau Jantan</a><br>
-                                    <label for="item-sell-name" class="item-sell-price">Rp 20.000.000</label>
-                                </div>
-                            </div>
-                            <a href="#buy" style="float: right;"><i class="fas fa-shopping-cart"></i> Buy</a>
-                        </td>
-                    </tr><tr>
-                        <td>
-                            <div class="table-item-sell" style="display: flex;">
-                                <div class="item-sell-img">
-                                    <img src="../css/images/banteng_real.jpg" width="50px" height="50px" alt="">
-                                </div>
-                                <div class="list-item-sell">
-                                    <a href="#kerbaujantan" class="item-sell-name" style="text-decoration: underline; padding-left: 10px;">Kerbau Jantan</a><br>
-                                    <label for="item-sell-name" class="item-sell-price">Rp 20.000.000</label>
-                                </div>
-                            </div>
-                            <a href="#buy" style="float: right;"><i class="fas fa-shopping-cart"></i> Buy</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="table-item-sell" style="display: flex;">
-                                <div class="item-sell-img">
-                                    <img src="../css/images/banteng_real.jpg" width="50px" height="50px" alt="">
-                                </div>
-                                <div class="list-item-sell">
-                                    <a href="#kerbaujantan" class="item-sell-name" style="text-decoration: underline; padding-left: 10px;">Kerbau Jantan</a><br>
-                                    <label for="item-sell-name" class="item-sell-price">Rp 20.000.000</label>
-                                </div>
-                            </div>
-                            <a href="#buy" style="float: right;"><i class="fas fa-shopping-cart"></i> Buy</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="table-item-sell" style="display: flex;">
-                                <div class="item-sell-img">
-                                    <img src="../css/images/banteng_real.jpg" width="50px" height="50px" alt="">
-                                </div>
-                                <div class="list-item-sell">
-                                    <a href="#kerbaujantan" class="item-sell-name" style="text-decoration: underline; padding-left: 10px;">Kerbau Jantan</a><br>
-                                    <label for="item-sell-name" class="item-sell-price">Rp 20.000.000</label>
-                                </div>
-                            </div>
-                            <a href="#buy" style="float: right;"><i class="fas fa-shopping-cart"></i> Buy</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="table-item-sell" style="display: flex;">
-                                <div class="item-sell-img">
-                                    <img src="../css/images/banteng_real.jpg" width="50px" height="50px" alt="">
-                                </div>
-                                <div class="list-item-sell">
-                                    <a href="#kerbaujantan" class="item-sell-name" style="text-decoration: underline; padding-left: 10px;">Kerbau Jantan</a><br>
-                                    <label for="item-sell-name" class="item-sell-price">Rp 20.000.000</label>
-                                </div>
-                            </div>
-                            <a href="#buy" style="float: right;"><i class="fas fa-shopping-cart"></i> Buy</a>
+                            <h1 id="cp-info" style="display:none">CP : Slamet - 0895234123412</h1><span>
+                            <button type="button" id="buy-href" href="#buy" style="float: right;"><i class="fas fa-shopping-cart"></i> Buy</button></span>
+                       
                         </td>
                     </tr>
                     </tbody>
@@ -146,131 +67,33 @@ and open the template in the editor.
         <!-- Content Home -->
         <div class="mid-content">
             <label class="label-item-buy" for="table-item-buy">Want to Buy</label>
-            <div class="mid-small-content m1" style="background-color: yellow; overflow-y: scroll; height: 86vh;">
+            <div class="mid-small-content m1" style="background-color: #f3f3f3; overflow-y: scroll; height: 86vh;">
                 <table class="table">
                     <tbody>
+                    
                     <tr>
                         <td>
                             <div class="table-item-sell" style="display: flex;">
                                 <div class="item-sell-img">
-                                    <img src="../css/images/banteng_real.jpg" width="50px" height="50px" alt="">
+                                    <img src="/css/images/banteng_real.jpg" alt="">
                                 </div>
                                 <div class="list-item-sell">
                                     <a href="#kerbaujantan" class="item-sell-name" style="text-decoration: underline; padding-left: 10px;">Kerbau Jantan</a><br>
-                                    <label for="item-sell-name" class="item-sell-price">Rp 20.000.000</label>
+                                    <label for="item-sell-name" class="item-sell-price">Rp 15.000.000</label>
                                 </div>
                             </div>
-                            <a href="#buy" style="float: right;"><i class="fas fa-shopping-cart"></i> Buy</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="table-item-sell" style="display: flex;">
-                                <div class="item-sell-img">
-                                    <img src="../css/images/banteng_real.jpg" width="50px" height="50px" alt="">
-                                </div>
-                                <div class="list-item-sell">
-                                    <a href="#kerbaujantan" class="item-sell-name" style="text-decoration: underline; padding-left: 10px;">Kerbau Jantan</a><br>
-                                    <label for="item-sell-name" class="item-sell-price">Rp 20.000.000</label>
-                                </div>
-                            </div>
-                            <a href="#buy" style="float: right;"><i class="fas fa-shopping-cart"></i> Buy</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="table-item-sell" style="display: flex;">
-                                <div class="item-sell-img">
-                                    <img src="../css/images/banteng_real.jpg" width="50px" height="50px" alt="">
-                                </div>
-                                <div class="list-item-sell">
-                                    <a href="#kerbaujantan" class="item-sell-name" style="text-decoration: underline; padding-left: 10px;">Kerbau Jantan</a><br>
-                                    <label for="item-sell-name" class="item-sell-price">Rp 20.000.000</label>
-                                </div>
-                            </div>
-                            <a href="#buy" style="float: right;"><i class="fas fa-shopping-cart"></i> Buy</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="table-item-sell" style="display: flex;">
-                                <div class="item-sell-img">
-                                    <img src="../css/images/banteng_real.jpg" width="50px" height="50px" alt="">
-                                </div>
-                                <div class="list-item-sell">
-                                    <a href="#kerbaujantan" class="item-sell-name" style="text-decoration: underline; padding-left: 10px;">Kerbau Jantan</a><br>
-                                    <label for="item-sell-name" class="item-sell-price">Rp 20.000.000</label>
-                                </div>
-                            </div>
-                            <a href="#buy" style="float: right;"><i class="fas fa-shopping-cart"></i> Buy</a>
-                        </td>
-                    </tr><tr>
-                        <td>
-                            <div class="table-item-sell" style="display: flex;">
-                                <div class="item-sell-img">
-                                    <img src="../css/images/banteng_real.jpg" width="50px" height="50px" alt="">
-                                </div>
-                                <div class="list-item-sell">
-                                    <a href="#kerbaujantan" class="item-sell-name" style="text-decoration: underline; padding-left: 10px;">Kerbau Jantan</a><br>
-                                    <label for="item-sell-name" class="item-sell-price">Rp 20.000.000</label>
-                                </div>
-                            </div>
-                            <a href="#buy" style="float: right;"><i class="fas fa-shopping-cart"></i> Buy</a>
-                        </td>
-                    </tr><tr>
-                        <td>
-                            <div class="table-item-sell" style="display: flex;">
-                                <div class="item-sell-img">
-                                    <img src="../css/images/banteng_real.jpg" width="50px" height="50px" alt="">
-                                </div>
-                                <div class="list-item-sell">
-                                    <a href="#kerbaujantan" class="item-sell-name" style="text-decoration: underline; padding-left: 10px;">Kerbau Jantan</a><br>
-                                    <label for="item-sell-name" class="item-sell-price">Rp 20.000.000</label>
-                                </div>
-                            </div>
-                            <a href="#buy" style="float: right;"><i class="fas fa-shopping-cart"></i> Buy</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="table-item-sell" style="display: flex;">
-                                <div class="item-sell-img">
-                                    <img src="../css/images/banteng_real.jpg" width="50px" height="50px" alt="">
-                                </div>
-                                <div class="list-item-sell">
-                                    <a href="#kerbaujantan" class="item-sell-name" style="text-decoration: underline; padding-left: 10px;">Kerbau Jantan</a><br>
-                                    <label for="item-sell-name" class="item-sell-price">Rp 20.000.000</label>
-                                </div>
-                            </div>
-                            <a href="#buy" style="float: right;"><i class="fas fa-shopping-cart"></i> Buy</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="table-item-sell" style="display: flex;">
-                                <div class="item-sell-img">
-                                    <img src="../css/images/banteng_real.jpg" width="50px" height="50px" alt="">
-                                </div>
-                                <div class="list-item-sell">
-                                    <a href="#kerbaujantan" class="item-sell-name" style="text-decoration: underline; padding-left: 10px;">Kerbau Jantan</a><br>
-                                    <label for="item-sell-name" class="item-sell-price">Rp 20.000.000</label>
-                                </div>
-                            </div>
-                            <a href="#buy" style="float: right;"><i class="fas fa-shopping-cart"></i> Buy</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="table-item-sell" style="display: flex;">
-                                <div class="item-sell-img">
-                                    <img src="../css/images/banteng_real.jpg" width="50px" height="50px" alt="">
-                                </div>
-                                <div class="list-item-sell">
-                                    <a href="#kerbaujantan" class="item-sell-name" style="text-decoration: underline; padding-left: 10px;">Kerbau Jantan</a><br>
-                                    <label for="item-sell-name" class="item-sell-price">Rp 20.000.000</label>
-                                </div>
-                            </div>
-                            <a href="#buy" style="float: right;"><i class="fas fa-shopping-cart"></i> Buy</a>
+                            <h1 id="cp-info-sell" style="display:none">CP : Slamet - 0895234123412</h1><span>
+                            <button type="button" id="sell-href" href="#sell" style="float: right;"><i class="fas fa-shopping-cart"></i> Sell</button></span>
+                            <script>
+                                let cpInfoSell = document.getElementById("cp-info-sell");
+                                let sellHref = document.getElementById("sell-href");
+
+                                sellHref.addEventListener("click", function(){
+                                    if(cpInfoSell.style.display === 'none'){
+                                        cpInfoSell.style.display ='block';
+                                    }
+                                })
+                            </script>
                         </td>
                     </tr>
                     </tbody>
@@ -278,10 +101,7 @@ and open the template in the editor.
             </div>
         </div>
 
-        <div class="side-content s2">
-            <label class="label0item-log" for="log-history">Log</label>
-            <div class="right-small-content" style="background-color: purple; overflow-y: scroll;" id="right-small-content"></div>
-        </div>
+        
     </div>
         <div th:replace="../includes/base  :: footer"></div>
     </body>
