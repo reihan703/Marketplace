@@ -63,6 +63,7 @@ label{
     font-weight: bold;
 }
 
+
 .s1 p{
     padding-left: 20px;
     padding-right: 20px;
@@ -84,7 +85,7 @@ label{
 }
 
 .mid-content{
-    width: 35%;
+    width: 50%;
     height: 100%;
     background-color: green;
 }
@@ -124,6 +125,7 @@ label{
 
 .s1, .mid-content, .s2{
     margin: 0px 20px;
+    width: 50%;
 }
 
 /* Card Login */

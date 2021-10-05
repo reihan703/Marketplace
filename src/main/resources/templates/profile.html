@@ -4,7 +4,7 @@ To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
     <head th:replace="../includes/base :: css"></head>
     <body>
         <header th:replace="../includes/base :: navbar"></header>
@@ -35,25 +35,6 @@ and open the template in the editor.
                         </div>
                     </div>
                     <hr>
-                    <div class="row">
-                        <div class="col-md-3">
-                            <h5>Password</h5>
-                        </div>
-                        <div class="col-md-9 text-secondary">
-                            <input class="password-input-profile text-secondary" type="password" name="password" id="password-input-profile" style="border: none; background-color: whitesmoke;" th:value="${session.password}" readonly> <span><input type="checkbox" onclick="myFunction()">Show Password</span>
-                        </div>
-                        <script>
-                            function myFunction() {
-                                var x = document.getElementById("password-input-profile");
-                                if (x.type === "password") {
-                                    x.type = "text";
-                                } else {
-                                    x.type = "password";
-                                }
-                                }
-                        </script>
-                    </div>
-                        <hr>
                     <div class="row">
                         <div class="col-md-3">
                             <h5>Phone</h5>
@@ -87,19 +68,23 @@ and open the template in the editor.
                         <table id="sell-order" class="display table-bordered" style="width:100%; background-color: white;">
                             <thead>
                                 <tr>
-                                    <th style="width: 5%;">Foto</th>
+                                    <th style="width: 10%;">Foto</th>
                                     <th style="width: 10%;">Nama barang</th>
+                                    <th style="width: 20%;">Deskripsi barang</th>
+                                    <th style="width: 10%;">Harga barang</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td><img src="/css/images/banteng_real.jpg" style="width: 50px; height: 50px;" alt=""></td>
-                                    <td><textarea class="form-control" name="sell-order-name" id="sell-order-name" style="box-shadow: none;border: none;word-wrap: break-word; overflow-y: scroll;" readonly>Kuda</textarea></td>
-                                    
+                                <tr th:each="sell_order : ${products}">
+                                    <th scope="row"><img alt="" th:src="*{'data:image/jpeg;base64,'+{sell_order.image}}" style="width: 100px;height: 100px;"></th>
+                                    <td th:text="${ sell_order.item_Name }"></td>
+                                    <td th:text="${ sell_order.item_Desc }"></td>
+                                    <td th:text="${ sell_order.item_Price }"></td>
                                 </tr>
                                 
                             </tbody>
                         </table>
+                        <a href="createSell" class="text-info">Create Sell Order</a>
                     </div>
                 </div>
                 
