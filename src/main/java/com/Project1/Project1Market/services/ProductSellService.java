@@ -2,11 +2,13 @@ package com.Project1.Project1Market.services;
 
 
 import com.Project1.Project1Market.models.SellProduct;
+import com.Project1.Project1Market.models.User;
 import com.Project1.Project1Market.repositories.SellRepository;
-import static com.sun.corba.se.spi.presentation.rmi.StubAdapter.request;
 import java.io.IOException;
 import java.util.Base64;
 import java.util.List;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,7 +19,6 @@ import org.springframework.web.multipart.MultipartFile;
 public class ProductSellService {
 	@Autowired
 	private SellRepository sellRepo;
-	
 	public void  saveProductToDB(MultipartFile file,String name,String description
 			,int price, int id)
 	{
@@ -35,7 +36,6 @@ public class ProductSellService {
 	p.setItem_Desc(description);
         p.setItem_Name(name);
         p.setItem_Price(price);
-        p.setId(price);
         p.setId(id);
         
         sellRepo.save(p);
@@ -44,4 +44,7 @@ public class ProductSellService {
 	{
 		return sellRepo.findAll();
 	}
+        public List<SellProduct> findByUserid(long user_id) {
+            return sellRepo.findByUserid(user_id);
+        }
 }

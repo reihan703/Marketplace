@@ -6,7 +6,7 @@
 package com.Project1.Project1Market.repositories;
 
 import com.Project1.Project1Market.models.SellProduct;
-import com.Project1.Project1Market.models.User;
+import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -16,4 +16,5 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface SellRepository extends JpaRepository<SellProduct, Long>{
+    List<SellProduct> findByUserid(long id);
 }

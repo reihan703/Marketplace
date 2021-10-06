@@ -28,32 +28,10 @@ and open the template in the editor.
                 
             <div class="header-list">
                 <ul>
-                    <li><a href="login.html" style="text-decoration: none; "><i class="fas fa-sign-in-alt"></i> SIGN UP / LOGIN</a></li>
                     <li><a href="/" style="text-decoration: none; ">HOME</a></li>
                     <li><a href="/profile" style="text-decoration: none; ">PROFILE</a></li>
                     <li><i class="bi bi-box-arrow-in-right"></i></li>
-                    <li><div class="input-group rounded">
-                        <input type="search" class="form-control rounded" id="search-input" style="box-shadow: none; display: none;" placeholder="Search" aria-label="Search"
-                          aria-describedby="search-addon" />
-                        <span class="input-group-text border-0" style="background-color: #f3f3f3;" id="search-addon">
-                          <i class="fas fa-search" style="cursor: pointer;"></i>
-                        </span>
-                        <script>
-                            const searchBtn = document.getElementById("search-addon");
-                            const searchInput = document.getElementById("search-input");
-
-                            if(searchBtn){
-                                searchBtn.addEventListener("click", function(){
-                                    if(searchInput.style.display === 'none'){
-                                        searchInput.style.display = 'block';
-                                        searchBtn.style.backgroundColor = '#e9ecef';
-                                    }else{
-                                        searchInput.style.display = 'none';
-                                        searchBtn.style.backgroundColor = '#f3f3f3';
-                                    }
-                            });}
-                        </script>
-                    </div></li>
+                    
                 </ul>
             </div> 
             </div>

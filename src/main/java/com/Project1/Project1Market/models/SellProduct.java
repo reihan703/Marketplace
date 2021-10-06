@@ -28,13 +28,13 @@ public class SellProduct implements Serializable {
 
     @Column(name = "item_Price")
     private int item_Price;
-
-    @Column(name = "id")
-    private int id;
     
     @Column(name = "image", columnDefinition = "longblob")
     private String image;
-
+    
+    @Column(name="id")
+    private long userid;
+    
     public long getId_Sell() {
         return id_Sell;
     }
@@ -67,20 +67,20 @@ public class SellProduct implements Serializable {
         this.item_Price = item_Price;
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
     public String getImage() {
         return image;
     }
 
     public void setImage(String image) {
         this.image = image;
+    }
+
+    public long getId() {
+        return userid;
+    }
+
+    public void setId(long id) {
+        this.userid = id;
     }
    
     

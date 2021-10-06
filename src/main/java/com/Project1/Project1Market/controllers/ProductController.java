@@ -12,6 +12,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import com.Project1.Project1Market.models.SellProduct;
+import com.Project1.Project1Market.models.User;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+import org.springframework.web.bind.annotation.ModelAttribute;
 
 @Controller
 public class ProductController {
@@ -26,7 +30,7 @@ public class ProductController {
         return "createSell";
     }
     
-     @PostMapping("/addP")
+    @PostMapping("/addP")
     public String saveProduct(@RequestParam("image") MultipartFile file,
     		@RequestParam("pname") String name,
     		@RequestParam("price") int price,
