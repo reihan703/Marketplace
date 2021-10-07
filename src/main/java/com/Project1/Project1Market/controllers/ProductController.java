@@ -25,19 +25,36 @@ public class ProductController {
     
     
     @GetMapping("/createSell")
-    public String create() {
-
+    public String create(Model model) {
+        
+        SellProduct products = new SellProduct();
+        model.addAttribute("products", products);
+        
         return "createSell";
     }
     
     @PostMapping("/addP")
-    public String saveProduct(@RequestParam("image") MultipartFile file,
+    public String saveProduct(
+                @RequestParam("image") MultipartFile file,
     		@RequestParam("pname") String name,
     		@RequestParam("price") int price,
     		@RequestParam("desc") String desc,
                 @RequestParam("id_user") int id)
     {
     	productService.saveProductToDB(file, name, desc, price, id);
+    	return "redirect:/profile";
+    }
+    
+    @PostMapping("/updateP")
+    public String updateProduct(
+                @RequestParam("image") MultipartFile file,
+    		@RequestParam("item_Name") String name,
+    		@RequestParam("item_Price") int price,
+    		@RequestParam("item_Desc") String desc,
+                @RequestParam("id_user") int id,
+                @RequestParam("id_Sell") int id_sell)
+    {
+    	productService.updateProductToDB(file, name, desc, price, id, id_sell );
     	return "redirect:/profile";
     }
 }

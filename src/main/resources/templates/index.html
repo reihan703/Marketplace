@@ -29,7 +29,7 @@ and open the template in the editor.
                                     <td th:text="${ sell_order.item_Name }"></td>
                                     <td th:text="${ sell_order.item_Desc }"></td>
                                     <td th:text="${ sell_order.item_Price }"></td>
-                                    <td><h1 id="cp-info-buy" style="display:none">CP : Slamet - 0895234123412</h1><button type="button" id="buy-href" href="#buy" style="float: right;"><i class="fas fa-shopping-cart"></i> Buy</button>
+                                    <td><h1 id="cp-info-buy" style="display:none" th:text="${ sell_order.item_Price }"></h1><button type="button" id="buy-href" href="#buy" style="float: right;"><i class="fas fa-shopping-cart"></i> Buy</button>
                                         <script>
                                             let cpInfoBuy = document.getElementById("cp-info-buy");
                                             let buyHref = document.getElementById("buy-href");
