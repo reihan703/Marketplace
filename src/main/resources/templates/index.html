@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="../includes/base :: css"></head>
+    <body>
+        <header th:replace="../includes/base :: navbar"></header>
+        <div class="main" style="justify-content: center;">
+        <div class="side-content s1">
+            <label class="label-item-sell" for="table-item-sell">Want to Sell</label>
+            <div class="left-small-content" style="background-color: #f3f3f3;height: 86vh; overflow-y: scroll;">
+                
+                <table id="sell-order" class="display table-bordered" style="width:100%; background-color: white;">
+                            <thead>
+                                <tr>
+                                    <th style="width: 10%;">Foto</th>
+                                    <th style="width: 10%;">Nama barang</th>
+                                    <th style="width: 20%;">Deskripsi barang</th>
+                                    <th style="width: 10%;">Harga barang</th>
+                                    <th style="width: 10%;">Buy</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr th:each="sell_order : ${sellProduct}">
+                                    <th scope="row"><img alt="" th:src="*{'data:image/jpeg;base64,'+{sell_order.image}}" style="width: 100px;height: 100px;"></th>
+                                    <td th:text="${ sell_order.item_Name }"></td>
+                                    <td th:text="${ sell_order.item_Desc }"></td>
+                                    <td th:text="'Rp. '+${ sell_order.item_Price }"></td>
+                                    <td><h1 th:id="'txt-'+${ sell_order.id_Sell }" style="display:none">CP : <span th:text="${ sell_order.user_Phone }"></span></h1><button th:data-id="${ sell_order.id_Sell }" class="beli" type="button" href="#buy" style="float: right;"><i class="fas fa-shopping-cart"></i> Buy</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+            </div>
+        </div>
+
+        <!-- Content Home -->
+        <div class="mid-content">
+            <label class="label-item-buy" for="table-item-buy">Want to Buy</label>
+            <div class="mid-small-content m1" style="background-color: #f3f3f3; overflow-y: scroll; height: 86vh;">
+                <table id="sell-order" class="display table-bordered" style="width:100%; background-color: white;">
+                            <thead>
+                                <tr>
+                                    <th style="width: 10%;">Foto</th>
+                                    <th style="width: 10%;">Nama barang</th>
+                                    <th style="width: 20%;">Deskripsi barang</th>
+                                    <th style="width: 10%;">Harga barang</th>
+                                    <th style="width: 10%;">Buy</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr th:each="buy_order : ${buyProduct}">
+                                    <th scope="row"><img alt="" th:src="*{'data:image/jpeg;base64,'+{buy_order.image}}" style="width: 100px;height: 100px;"></th>
+                                    <td th:text="${ buy_order.item_Name }"></td>
+                                    <td th:text="${ buy_order.item_Desc }"></td>
+                                    <td th:text="'Rp. '+${ buy_order.item_Price }"></td>
+                                    <td><h1 th:id="'txt-'+${ buy_order.id_Buy }" style="display:none" th:text="${ buy_order.item_Price }">CP : <span th:text="${ buy_order.user_Phone }"></span></h1><button type="button" th:data-id="${ buy_order.id_Buy }" class="jual" href="#sell" style="float: right;"><i class="fas fa-shopping-cart"></i> Sell</button></td> 
+                                </tr>
+                                
+                            </tbody>
+                        </table>
+            </div>
+        </div>
+
+        
+    </div>
+        
+    <div th:replace="../includes/base  :: footer"></div>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+    
+    <script>
+        $(document).ready(function() {
+            $('table.display').DataTable();
+        } );
+   </script>
+   
+   <script>
+        /*<!{CDATA}*/
+            $(function() {
+                $(".beli").click(function() {
+                  var id = $(this).data('id')
+                  console.log(id)
+                  $("#txt-"+ id).css("display", "block");
+                })
+
+            });
+        /*]]>*/
+    </script>
+    
+    <script>
+        /*<!{CDATA}*/
+            $(function() {
+                $(".jual").click(function() {
+                  var id = $(this).data('id')
+                  console.log(id)
+                  $("#txt-"+ id).css("display", "block");
+                })
+
+            });
+        /*]]>*/
+    </script>
+        
+    </body>
+</html>

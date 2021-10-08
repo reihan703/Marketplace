@@ -1,0 +1,274 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+html{
+    height: 100%;
+}
+
+/*MAIN*/
+body{
+    font-family: 'Poppins', sans-serif;
+    min-height: 100%;
+    /*display: flex;*/
+    flex-direction: column;
+}
+
+/* Header */
+.header{
+    display: block;
+    position: relative;
+    left: 0;
+    top: 0;
+    width: 100%;
+}
+
+.header-logo{
+    float: left;
+    font-size: 36px;
+    padding: 0px 40px;
+}
+
+.header-list li{
+    list-style: none;
+    float: right;
+    padding: 0px 20px;
+}
+
+.input-group input{
+    list-style: none;
+    float: right;
+}
+
+.input-group .fas:hover{
+    color: blue;
+}
+
+/* Main */
+.main{
+    margin: 0;
+    padding: 10px 0;
+    display: flex;
+    position: relative;
+}
+
+.s1{
+    width: 35%;
+    height: 100%;
+    text-align: left;
+    color: black;
+    background-color: red;
+}
+
+label{
+    padding: 10px 10px;
+    font-weight: bold;
+}
+
+
+.s1 p{
+    padding-left: 20px;
+    padding-right: 20px;
+    font-size: large;
+}
+
+.s1 h1, h2{
+    font-size: medium;
+    font-weight: normal;
+}
+
+.item-sell-img img, .item-buy-img img{
+    width: 50px;
+    height: 50px;
+}
+
+.jual :hover, .beli:hover{
+    color: #f37da3;
+}
+
+.mid-content{
+    width: 50%;
+    height: 100%;
+    background-color: green;
+}
+
+.mid-content p{
+    padding-left: 20px;
+    padding-right: 20px;
+    font-size: large;    
+}
+
+.mid-content h1, h2{
+    font-size: medium;
+    font-weight: normal;
+}
+
+.s2 {
+    
+    width: 30%;
+    height: 100%;
+    text-align: left;
+    color: black;
+    background-color: cyan;
+    
+}
+
+.s2 p{
+    padding-left: 20px;
+    padding-right: 20px;
+    font-size: large; 
+}
+
+.s2 h1,h2{
+    font-size: medium;
+    padding-top: 20px;
+    font-weight: normal;
+}
+
+.s1, .mid-content, .s2{
+    margin: 0px 20px;
+    width: 50%;
+}
+
+/* Card Login */
+.card-login{
+    top: 40%;
+    left: 30%;
+    width: 40%;
+}
+
+.card-login-body h1, .card-register-body h1{
+    font-size: medium;
+    padding-top: 10px;
+    font-weight: normal;
+}
+
+.card-login-body h2, .card-register-body h2{
+    padding: 0;
+    font-size: small;
+}
+
+/* Footer */
+.footer{
+    bottom: 0px;
+    width: 100%;
+    background-color: #f3f3f3;
+    margin-top: auto;
+}
+
+.footer-left{
+    width:50%;
+    padding: 10px 10%;
+}
+
+table a{
+    color: black;
+    text-decoration: none;
+}
+
+.table tbody, .table td, .table tfoot, .table th, .table thead, .table tr{
+    border-style: none;
+    padding: 8px 20px;
+    width: 50%;
+}
+
+/* Profile */
+.accName{
+    background-color: darkblue;
+    color: white;
+    height: 1fr;
+    padding-top: 20px;
+    text-align: center;
+}
+
+.accName a{
+    margin-left: 10px;
+    display: block;
+    text-decoration: none;
+    color: white;
+    padding-bottom: 10px;
+    font-size: 20px;
+}
+
+.card{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.content,.accAbout,.accOrder{
+    background-color: whitesmoke;
+}
+
+.accAbout{
+    padding-top: 20px;
+}
+
+#buy-order input, #sell-order input, #buy-order textarea, #sell-order textarea{
+    border: none;
+    width: 25vh;
+}
+
+/*
+body{
+    margin-top: 20px;
+    background-color: lightgray;
+}
+*/
+
+/* Feedback Form */
+.feedback-form{
+    top: 40%;
+    left: 30%;
+    width: 40%;
+}
+
+.feedback-form-body h1{
+    font-size: medium;
+    padding-top: 10px;
+    font-weight: normal;
+}
+
+.feedback-form-body h2{
+    padding: 0;
+    font-size: small;
+}
+
+/* Login2 */
+#login .container #login-row #login-column #login-box {
+  margin-top: 120px;
+  max-width: 600px;
+  height: 400px;
+  border: 1px solid #9C9C9C;
+  background-color: #EAEAEA;
+}
+#login .container #login-row #login-column #login-box #login-form {
+  padding: 20px;
+}
+#login .container #login-row #login-column #login-box #login-form #register-link {
+  margin-top: -85px;
+}
+/* Login2 END */
+
+/* Register2 */
+.divider-text {
+    position: relative;
+    text-align: center;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+.divider-text span {
+    padding: 7px;
+    font-size: 12px;
+    position: relative;   
+    z-index: 2;
+}
+.divider-text:after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    border-bottom: 1px solid #ddd;
+    top: 55%;
+    left: 0;
+    z-index: 1;
+}
+/* Register2 END */
