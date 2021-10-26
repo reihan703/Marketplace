@@ -1,9 +1,9 @@
 package com.Project1.Project1Market.controllers;
 
-
 import com.Project1.Project1Market.models.BuyProduct;
 import com.Project1.Project1Market.models.SellProduct;
 import com.Project1.Project1Market.models.SuggestModel;
+import com.Project1.Project1Market.models.User;
 import com.Project1.Project1Market.services.FeedbackService;
 import com.Project1.Project1Market.services.ProductBuyService;
 import com.Project1.Project1Market.services.ProductSellService;
@@ -14,8 +14,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 public class MainController {
@@ -35,6 +37,10 @@ public class MainController {
                 model.addAttribute("buyProduct", buyProduct);
         List<SellProduct> sellProduct = productSellService.getAll();
 		model.addAttribute("sellProduct", sellProduct);
+        SuggestModel suggestModel = feedbackService.firstRow();
+		model.addAttribute("suggestModel", suggestModel);
+        SuggestModel suggestModel2 = feedbackService.secondRow();
+		model.addAttribute("suggestModel2", suggestModel2);
         return "index";
     }
     
@@ -45,9 +51,9 @@ public class MainController {
 
         long user_id = (long) session.getAttribute("id");
 
-        List<SellProduct> sellProduct = productSellService.findByUserid(user_id);
+        List<SellProduct> sellProduct = productSellService.findByUserId(user_id);
 		model.addAttribute("sellProduct", sellProduct);
-        List<BuyProduct> buyProduct = productBuyService.findByUserid(user_id);
+        List<BuyProduct> buyProduct = productBuyService.findByUserId(user_id);
                 model.addAttribute("buyProduct", buyProduct);
                 
         return "profile";
@@ -63,11 +69,23 @@ public class MainController {
     }
     
     @PostMapping("/feedback/store")
-    public String postFeedback(@RequestParam("id_user") long id,
-            @RequestParam("email") String email,
-            @RequestParam("suggest") String suggest)
+    public String postFeedback(@ModelAttribute("suggestModel") 
+            SuggestModel suggestModel, HttpServletRequest request,
+            RedirectAttributes ra) throws Exception
     {
-        feedbackService.postFeedbackToDB(id, email, suggest);
+        HttpSession session = request.getSession(true);
+        
+        User user = new User();
+        user.setId((long) session.getAttribute("id"));
+        
+        suggestModel.setUser(user);
+        
+        if (suggestModel.getContent_Suggestion().equals("") || suggestModel.getEmail_Suggest().equals("")) {
+            ra.addFlashAttribute("danger", "Suggestion or Email cannot be null!");
+            return "redirect:/feedback";
+        }
+        
+        feedbackService.postFeedbackToDB(suggestModel);
         return "redirect:/";
     }
     /*

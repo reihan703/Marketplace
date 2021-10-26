@@ -16,5 +16,5 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface SellRepository extends JpaRepository<SellProduct, Long>{
-    List<SellProduct> findByUserid(long id);
+    List<SellProduct> findByUserId(long user_id);
 }

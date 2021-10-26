@@ -29,21 +29,19 @@ public class SellProduct implements Serializable {
     @Column(name = "item_Price")
     private int item_Price;
 
-    @Column(name = "id")
-    private long userid;
+    @ManyToOne
+    @JoinColumn(name = "id")
+    private User user;
     
     @Column(name = "image", columnDefinition = "longblob")
     private String image;
     
-    @Column(name = "user_Phone")
-    private String user_Phone;
-
-    public String getUser_Phone() {
-        return user_Phone;
+    public String getImage() {
+        return image;
     }
 
-    public void setUser_Phone(String user_Phone) {
-        this.user_Phone = user_Phone;
+    public void setImage(String image) {
+        this.image = image;
     }
 
     public long getId_Sell() {
@@ -77,26 +75,15 @@ public class SellProduct implements Serializable {
     public void setItem_Price(int item_Price) {
         this.item_Price = item_Price;
     }
-
-    public long getUserid() {
-        return userid;
-    }
-
-    public void setUserid(long userid) {
-        this.userid = userid;
-    }
-
-    public String getImage() {
-        return image;
-    }
-
-    public void setImage(String image) {
-        this.image = image;
-    }
-   
     
-    
-    
+    public User getUser() {
+        return user;
+    }
 
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    
     
 }

@@ -36,15 +36,52 @@ public class RegisterController {
         return "register";
     }
 
+//    @PostMapping("/register")
+//    public String store(@ModelAttribute("user") User user, 
+//            HttpServletRequest request, RedirectAttributes ra) throws Exception {
+//        try{
+//            userInterface.register(user);
+//        }
+//        catch (Exception e){
+//            return "redirect:/register";
+//        }
+//        return "redirect:/login";
+//    }
+    
     @PostMapping("/register")
     public String store(@ModelAttribute("user") User user, 
             HttpServletRequest request, RedirectAttributes ra) throws Exception {
-        try{
-            userInterface.register(user);
-        }
-        catch (Exception e){
+        if (user.getName().equals("")) {
+            ra.addFlashAttribute("danger", "Name cannot be null!");
             return "redirect:/register";
         }
+        
+        if (user.getPassword().equals("")) {
+            ra.addFlashAttribute("danger", "Password cannot be null!");
+            return "redirect:/register";
+        }
+        
+        if (user.getAddress().equals("")) {
+            ra.addFlashAttribute("danger", "Address cannot be null!");
+            return "redirect:/register";
+        }
+        
+        if (user.getCity().equals("")) {
+            ra.addFlashAttribute("danger", "City cannot be null!");
+            return "redirect:/register";
+        }
+        
+        if (user.getEmail().equals("")) {
+            ra.addFlashAttribute("danger", "Email cannot be null!");
+            return "redirect:/register";
+        }
+        
+        if (user.getPhone().equals("")) {
+            ra.addFlashAttribute("danger", "Phone cannot be null!");
+            return "redirect:/register";
+        }
+        
+        userInterface.register(user);
         return "redirect:/login";
     }
 

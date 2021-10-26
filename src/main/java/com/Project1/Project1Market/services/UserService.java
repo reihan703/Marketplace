@@ -29,6 +29,18 @@ public class UserService implements UserInterface {
         String hashed = this.hash(user.getPassword());
         user.setPassword(hashed);
         
+        if (user.getName().length()>100){
+            throw new Exception("Name is too long");
+        }
+
+        if (user.getCity().length()>100){
+            throw new Exception("City is too long");
+        }
+
+        if (user.getAddress().length()>100){
+            throw new Exception("Address is too long");
+        }
+        
         this.userRepositories.save(user);
     }
 

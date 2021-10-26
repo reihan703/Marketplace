@@ -1,20 +1,12 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.Project1.Project1Market.services;
 
 import com.Project1.Project1Market.interfaces.FeedbackInterface;
 import com.Project1.Project1Market.models.SuggestModel;
 import com.Project1.Project1Market.repositories.FeedbackRepository;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-/**
- *
- * @author Victorio Adam
- */
 @Service
 public class FeedbackService implements FeedbackInterface {
     
@@ -22,14 +14,21 @@ public class FeedbackService implements FeedbackInterface {
     private FeedbackRepository feedbackRepository;
     
     @Override
-    public void postFeedbackToDB(long id, String email, String suggest){
-        SuggestModel sm = new SuggestModel();
+    public void postFeedbackToDB(SuggestModel suggestModel) throws Exception{
         
-        sm.setId(id);
-        sm.setEmail_Suggest(email);
-        sm.setContent_Suggestion(suggest);
+        if(suggestModel.getContent_Suggestion().equals("") || suggestModel.getEmail_Suggest().equals("")){
+            throw new Exception("Suggestion or Email cannot be null");
+        }
         
-        feedbackRepository.save(sm);
+        feedbackRepository.save(suggestModel);
+    }
+    
+    public SuggestModel firstRow() {
+        return feedbackRepository.findFirstRow();
+    }
+
+    public SuggestModel secondRow() {
+        return feedbackRepository.findSecondRow();
     }
     
 }

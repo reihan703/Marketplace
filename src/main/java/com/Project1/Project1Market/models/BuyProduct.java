@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.Project1.Project1Market.models;
 
 import java.io.Serializable;
@@ -11,12 +6,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-/**
- *
- * @author Victorio Adam
- */
 @Entity
 @Table(name = "buy_order")
 public class BuyProduct implements Serializable {
@@ -33,22 +26,12 @@ public class BuyProduct implements Serializable {
     @Column(name = "item_Price")
     private int item_Price;
 
-    @Column(name = "id")
-    private long userid;
+    @ManyToOne
+    @JoinColumn(name = "id")
+    private User user;
     
     @Column(name = "image", columnDefinition = "longblob")
     private String image;
-    
-    @Column(name = "user_Phone")
-    private String user_Phone;
-
-    public String getUser_Phone() {
-        return user_Phone;
-    }
-
-    public void setUser_Phone(String user_Phone) {
-        this.user_Phone = user_Phone;
-    }
 
     public long getId_Buy() {
         return id_Buy;
@@ -82,12 +65,12 @@ public class BuyProduct implements Serializable {
         this.item_Price = item_Price;
     }
 
-    public long getUserid() {
-        return userid;
+    public User getUser() {
+        return user;
     }
 
-    public void setUserid(long userid) {
-        this.userid = userid;
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public String getImage() {

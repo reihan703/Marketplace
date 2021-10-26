@@ -16,15 +16,15 @@ import org.springframework.web.multipart.MultipartFile;
 public interface SellInterface {  
     List<SellProduct> getAll();
     
-    void  saveProductToDB(MultipartFile file, String name,
-            String desc, int price, long id, String phone);
+    void  saveProductToDB(MultipartFile file,String name,String desc
+			,int price, long id);
     
-    List<SellProduct> findByUserid(long user_id);
+    List<SellProduct> findByUserId(long user_id);
     
     SellProduct getById(long id_Sell);
     
-    void updateProductToDB(MultipartFile file, String name,
-            String desc, int price, long id, long id_sell, String phone);
+    void updateProductToDB(MultipartFile file,String name,String desc
+			,int price, long id, long id_Sell);
     
     void delete(long id);
 }

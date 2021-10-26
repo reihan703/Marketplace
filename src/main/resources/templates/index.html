@@ -24,7 +24,7 @@
                                     <td th:text="${ sell_order.item_Name }"></td>
                                     <td th:text="${ sell_order.item_Desc }"></td>
                                     <td th:text="'Rp. '+${ sell_order.item_Price }"></td>
-                                    <td><h1 th:id="'txt-'+${ sell_order.id_Sell }" style="display:none">CP : <span th:text="${ sell_order.user_Phone }"></span></h1><button th:data-id="${ sell_order.id_Sell }" class="beli" type="button" href="#buy" style="float: right;"><i class="fas fa-shopping-cart"></i> Buy</button>
+                                    <td><h1 th:id="'txt-'+${ sell_order.id_Sell }" style="display:none">CP : <span th:text="${ sell_order.user.phone }"></span></h1><button th:data-id="${ sell_order.id_Sell }" class="beli" type="button" href="#buy" style="float: right;"><i class="fas fa-shopping-cart"></i> Buy</button>
                                     </td>
                                 </tr>
                             </tbody>
@@ -52,16 +52,44 @@
                                     <td th:text="${ buy_order.item_Name }"></td>
                                     <td th:text="${ buy_order.item_Desc }"></td>
                                     <td th:text="'Rp. '+${ buy_order.item_Price }"></td>
-                                    <td><h1 th:id="'txt-'+${ buy_order.id_Buy }" style="display:none" th:text="${ buy_order.item_Price }">CP : <span th:text="${ buy_order.user_Phone }"></span></h1><button type="button" th:data-id="${ buy_order.id_Buy }" class="jual" href="#sell" style="float: right;"><i class="fas fa-shopping-cart"></i> Sell</button></td> 
+                                    <td><h1 th:id="'txt-'+${ buy_order.id_Buy }" style="display:none">CP : <span th:text="${ buy_order.user.phone }"></span></h1><button type="button" th:data-id="${ buy_order.id_Buy }" class="jual" href="#sell" style="float: right;"><i class="fas fa-shopping-cart"></i> Sell</button></td> 
                                 </tr>
                                 
                             </tbody>
-                        </table>
+                </table>
             </div>
         </div>
 
         
-    </div>
+        </div>
+        <div class="row mt-3 mb-3 ml-3 mr-3"  >
+            <div class="col " >
+                <div class="card">
+                    <div class="card-header">
+                        Feedback
+                    </div>
+                    <div class="card-body">
+                        <blockquote class="blockquote mb-0">
+                            <p th:each="suggest_form : ${suggestModel}"><span th:text="${ suggest_form.content_Suggestion }"></span></p>
+                            <footer class="blockquote-footer">Anon</footer>
+                        </blockquote>
+                    </div>
+                </div>
+            </div>
+            <div class="col ">
+                <div class="card">
+                    <div class="card-header">
+                        Feedback
+                    </div>
+                    <div class="card-body">
+                        <blockquote class="blockquote mb-0">
+                            <p th:each="suggest_form : ${suggestModel2}"><span th:text="${ suggest_form.content_Suggestion }"></span></p>
+                            <footer class="blockquote-footer">Anon</footer>
+                        </blockquote>
+                    </div>
+                </div>
+            </div>
+        </div>
         
     <div th:replace="../includes/base  :: footer"></div>
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
@@ -80,6 +108,7 @@
                   var id = $(this).data('id')
                   console.log(id)
                   $("#txt-"+ id).css("display", "block");
+                  $(this).hide();
                 })
 
             });
@@ -93,6 +122,7 @@
                   var id = $(this).data('id')
                   console.log(id)
                   $("#txt-"+ id).css("display", "block");
+                  $(this).hide();
                 })
 
             });
