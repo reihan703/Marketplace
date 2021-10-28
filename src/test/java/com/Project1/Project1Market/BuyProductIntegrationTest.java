@@ -1,15 +1,21 @@
 package com.Project1.Project1Market;
 
+import com.Project1.Project1Market.models.BuyProduct;
+import com.Project1.Project1Market.models.User;
 import com.Project1.Project1Market.repositories.BuyRepository;
 import com.Project1.Project1Market.services.ProductBuyService;
+import java.util.Arrays;
+import java.util.List;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.ArgumentMatchers.anyString;
 import org.mockito.InjectMocks;
 import org.mockito.Mockito;
+import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
@@ -28,18 +34,32 @@ public class BuyProductIntegrationTest {
 
     @Test
     public void createBuyOrder() {
-        try{
-//            File img = new File("D:\\NetBeans Projects\\Project1Market-master\\src\\main\\resources\\static\\css\\images\\banteng_real.jpg");
-            MultipartFile mmf = new MockMultipartFile("file", "test-file.txt",
-                "text/plain" , "Green Learner - Arvind".getBytes());
+        
+        MultipartFile mmf = new MockMultipartFile("file", "test-file.txt",
+            "text/plain" , "Green Learner - Arvind".getBytes());
 
-//            File file = File.createTempFile("test", ".jpg");
-            productBuyService.saveProductToDB(mmf, "Baju", "Brand new clothing arrived soon", 20000, 1);
-            productBuyService.findByUserId(1);
-            verify(buyRepository, times(1)).findByUserId(1);
-        }catch(Exception e){
-            System.out.println(e);
-        }
+        User user = new User();
+        user.setId(1);
+        
+        
+        BuyProduct product = new BuyProduct();
+        
+        product.setImage(mmf.getOriginalFilename());
+        product.setItem_Desc("Brand new clothing arrived soon");
+        product.setItem_Name("Baju");
+        product.setItem_Price(20000);
+        product.setUser(user);
+       
+        when(buyRepository.save(product)).thenReturn(product);
+        productBuyService.saveProductToDB(mmf, "Baju", "Brand new clothing arrived soon", 20000, 1);
+        
+        List<BuyProduct> listBuy = Arrays.asList(product);
+
+        when(buyRepository.findByUserId(1)).thenReturn(listBuy);
+        List<BuyProduct> product2 = productBuyService.findByUserId(1);
+        
+        Assertions.assertEquals(Arrays.asList(product), product2);
+        
     }
 
     @Test
@@ -87,4 +107,12 @@ public class BuyProductIntegrationTest {
         }
     }
     
+    @Test
+    public void DeleteBuyProduct(){
+        long id = 1;
+        doNothing().when(buyRepository).deleteById(id);
+        productBuyService.delete(id);
+        
+        verify(buyRepository, times(1)).deleteById(id);
+    }
 }

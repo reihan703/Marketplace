@@ -2,6 +2,7 @@ package com.Project1.Project1Market;
 
 import java.util.Random;
 import com.Project1.Project1Market.models.User;
+import java.util.HashMap;
 import net.bytebuddy.utility.RandomString;
 import static org.hamcrest.Matchers.containsString;
 import org.junit.jupiter.api.Test;
@@ -322,5 +323,76 @@ public class WebMvcRegisterTests {
                 .andExpect(status().is3xxRedirection())
                 .andExpect(MockMvcResultMatchers.redirectedUrl("/"))
                 .andDo(print());
+    }
+    
+    @Test
+    public void testRegisterThenLoginThenLogout() throws Exception {
+        Random rnd = new Random();
+        String SALTCHARS = "1234567890";
+        StringBuilder salt = new StringBuilder();
+        while (salt.length() < 12) { // length of the random string.
+            int index = (int) (rnd.nextFloat() * SALTCHARS.length());
+            salt.append(SALTCHARS.charAt(index));
+        }
+        String saltStr = salt.toString();
+        
+        mockMvc.perform(get("/register"))
+                .andExpect(status().isOk())
+                .andExpect(content().string(containsString("Have an account?")));
+
+        String email = RandomString.make(10).toLowerCase() + "@mail.com";
+        String password = RandomString.make(10).toLowerCase();
+        String city = RandomString.make(10).toLowerCase();
+        String address = RandomString.make(10).toLowerCase();
+        String phone = saltStr;
+        
+        User user = new User();
+        user.setEmail(email);
+        user.setName("Hudya");
+        user.setPassword(password);
+        user.setCity(city);
+        user.setAddress(address);
+        user.setPhone(phone);
+
+        mockMvc.perform(post("/register")
+                .flashAttr("user", user))
+                .andExpect(status().is3xxRedirection())
+                .andExpect(MockMvcResultMatchers.redirectedUrl("/login"));
+
+        mockMvc.perform(get("/login"))
+                .andExpect(status().isOk())
+                .andExpect(content().string(containsString("Login")));
+
+        User userLogin = new User();
+        userLogin.setEmail(email);
+        userLogin.setPassword(password);
+        
+        mockMvc.perform(post("/login")
+                .flashAttr("user", userLogin))
+                .andExpect(status().is3xxRedirection())
+                .andExpect(MockMvcResultMatchers.redirectedUrl("/"))
+                .andDo(print());
+        
+        HashMap<String, Object> sessionattr = new HashMap<String, Object>();
+        
+        sessionattr.put("id", user.getId());
+        sessionattr.put("email", user.getEmail());
+        sessionattr.put("name", user.getName());
+        sessionattr.put("loggedIn", true);
+                
+        mockMvc.perform(get("/profile")
+                .sessionAttrs(sessionattr))
+                .andExpect(status().isOk());
+        
+        mockMvc.perform(get("/logout")
+                .sessionAttrs(sessionattr))
+                .andExpect(status().is3xxRedirection())
+                .andExpect(MockMvcResultMatchers.redirectedUrl("/login"))
+                .andDo(print());
+        
+        sessionattr.remove("id");
+        sessionattr.remove("email");
+        sessionattr.remove("name");
+        sessionattr.remove("loggedIn");
     }
 }
