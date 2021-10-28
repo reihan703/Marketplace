@@ -65,9 +65,9 @@ public class ProductBuyController {
     
     @PostMapping("/updatePB")
     public String updateProductBuy(@RequestParam("image") MultipartFile file,
-    		@RequestParam("pname") String name,
-    		@RequestParam("price") String priceProduct,
-    		@RequestParam("desc") String desc,
+    		@RequestParam("item_Name") String name,
+    		@RequestParam("item_Price") String priceProduct,
+    		@RequestParam("item_Desc") String desc,
                 @RequestParam("id_user") long id,
                 @RequestParam("id_Buy") long id_buy, RedirectAttributes ra)
     {

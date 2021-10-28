@@ -117,7 +117,7 @@ public class WebMvcBuyProductTests{
                 .andExpect(status().isOk())
                 .andExpect(content().string(containsString("Foto Barang")));
         
-        
+        //Photo
         MultipartFile mmf = new MockMultipartFile("file", "test-file.txt",
                 "text/plain" , "Green Learner - Arvind".getBytes());
         
