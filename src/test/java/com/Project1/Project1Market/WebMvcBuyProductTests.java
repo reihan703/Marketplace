@@ -2,6 +2,7 @@ package com.Project1.Project1Market;
         
 import com.Project1.Project1Market.models.BuyProduct;
 import com.Project1.Project1Market.models.User;
+import java.util.HashMap;
 import java.util.Random;
 import net.bytebuddy.utility.RandomString;
 import static org.hamcrest.Matchers.containsString;
@@ -129,7 +130,6 @@ public class WebMvcBuyProductTests{
         buyProduct.setItem_Price(2000);
         buyProduct.setUser(user);
         
-        String image = mmf.getOriginalFilename();
         String desc = "test";
         String name = "test";
         String priceProduct = "2000";
@@ -144,6 +144,72 @@ public class WebMvcBuyProductTests{
                 .param("pname",name)
                 .param("price",priceProduct)
                 .param("id_user",Long.toString(id)))
+                .andExpect(status().is3xxRedirection())
+                .andExpect(MockMvcResultMatchers.redirectedUrl("/profile"))
+                .andDo(print());
+    }
+    
+    @Test
+    public void testLoginThenUpdate() throws Exception{
+        
+        String email = RandomString.make(10).toLowerCase() + "@gmail.com";
+        String password = RandomString.make(10).toLowerCase();
+
+        User user = new User();
+        user.setEmail(email);
+        user.setName("Test");
+        user.setPassword(password);
+        user.setAddress("disini");
+        user.setCity("depok");
+        user.setPhone("085921706170");
+        
+        mockMvc.perform(post("/register")
+                .flashAttr("user", user))
+                .andExpect(status().is3xxRedirection())
+                .andExpect(MockMvcResultMatchers.redirectedUrl("/login"));
+
+        User userLogin = new User();
+        userLogin.setEmail(email);
+        userLogin.setPassword(password);
+
+        mockMvc.perform(post("/login")
+                .flashAttr("user", userLogin))
+                .andExpect(status().is3xxRedirection())
+                .andExpect(MockMvcResultMatchers.redirectedUrl("/"));
+
+        HashMap<String, Object> sessionattr = new HashMap<String, Object>();
+        
+        sessionattr.put("id", user.getId());
+        sessionattr.put("email", user.getEmail());
+        sessionattr.put("name", user.getName());
+        sessionattr.put("loggedIn", true);
+
+        mockMvc.perform(get("/")
+                .sessionAttrs(sessionattr))
+                .andExpect(status().isOk());
+        
+        mockMvc.perform(get("/buyProduct/6/edit")
+                .sessionAttrs(sessionattr))
+                .andExpect(status().isOk());
+        
+        MultipartFile mmf = new MockMultipartFile("file", "test-file.txt",
+                "text/plain" , "Green Learner - Arvind".getBytes());
+        
+        String desc = "test";
+        String name = "test";
+        String priceProduct = "2000";
+        long id_Buy = 6;
+        long id = user.getId();
+        
+        MockMvc mockMvc2 
+      = MockMvcBuilders.webAppContextSetup(webApplicationContext).build();
+        mockMvc2.perform(MockMvcRequestBuilders.multipart("/updatePB")
+                .file("image",mmf.getBytes())
+                .param("item_Desc",desc)
+                .param("item_Name",name)
+                .param("item_Price",priceProduct)
+                .param("id_user",Long.toString(id))
+                .param("id_Buy",Long.toString(id_Buy)))
                 .andExpect(status().is3xxRedirection())
                 .andExpect(MockMvcResultMatchers.redirectedUrl("/profile"))
                 .andDo(print());

@@ -115,4 +115,35 @@ public class BuyProductIntegrationTest {
         
         verify(buyRepository, times(1)).deleteById(id);
     }
+    
+    @Test
+    public void TestUsingUpdateMethod() {
+        
+        MultipartFile mmf = new MockMultipartFile("file", "test-file.txt",
+            "text/plain" , "Green Learner - Arvind".getBytes());
+
+        User user = new User();
+        user.setId(1);
+        
+        
+        BuyProduct product = new BuyProduct();
+        
+        product.setImage(mmf.getOriginalFilename());
+        product.setItem_Desc("Brand new clothing arrived soon");
+        product.setItem_Name("Baju");
+        product.setItem_Price(20000);
+        product.setUser(user);
+        product.setId_Buy(2);
+       
+        when(buyRepository.save(product)).thenReturn(product);
+        productBuyService.updateProductToDB(mmf, "Baju", "Brand new clothing arrived soon", 20000, 1,2);
+        
+        List<BuyProduct> listBuy = Arrays.asList(product);
+
+        when(buyRepository.findByUserId(1)).thenReturn(listBuy);
+        List<BuyProduct> product2 = productBuyService.findByUserId(1);
+        
+        Assertions.assertEquals(Arrays.asList(product), product2);
+        
+    }
 }
