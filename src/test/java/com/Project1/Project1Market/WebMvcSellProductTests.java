@@ -38,7 +38,7 @@ public class WebMvcSellProductTests {
     private WebApplicationContext webApplicationContext;
     
     @Test
-    public void testRegisterThenPostBuyProduct() throws Exception {
+    public void testRegisterThenPostSellProduct() throws Exception {
         MockHttpSession session = new MockHttpSession();
         
         Random rnd = new Random();
