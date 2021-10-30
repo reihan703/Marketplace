@@ -115,37 +115,5 @@ public class ProductBuyService implements BuyInterface{
         this.buyRepository.deleteById(id);
     }
     
-    public void saveProductToTest(MultipartFile file,String name,String desc
-			,String priceProduct, long id) throws Exception
-	{
-            int price;
-            
-            User user = new User();
-            user.setId(id);
-            
-            BuyProduct p = new BuyProduct();
-            String fileName = StringUtils.cleanPath(file.getOriginalFilename());
-            if(fileName.contains(".."))
-            {
-		System.out.println("not a a valid file");
-            }
-            try {
-		p.setImage(Base64.getEncoder().encodeToString(file.getBytes()));
-            } catch (IOException e) {
-		e.printStackTrace();
-            }
-            
-            if(priceProduct.equals("")){
-                throw new Exception("Price cannot be null");
-            }
-            
-            price = Integer.parseInt(priceProduct);
-                           
-	p.setItem_Desc(desc);
-        p.setItem_Name(name);
-        p.setItem_Price(price);
-        p.setUser(user);
-        
-        buyRepository.save(p);
-	}
+    
 }
