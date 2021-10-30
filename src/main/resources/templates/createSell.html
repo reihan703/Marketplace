@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+    xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="../includes/base :: css"></head>
+    <body>
+        <header th:replace="../includes/base :: navbar"></header>
+        <div class="feedback" style="padding: 10% 0;">
+            <div class="card feedback-form text-center">
+                <div class="feedback-form-body" id="feedback-form-body">
+                    
+                    <form method="POST" action="#" th:action="@{/addPS}" enctype="multipart/form-data">
+                        <div class="feedback-form-session" id="feedback-form-session">
+                            <br>
+                                
+                            <div class="alert alert-danger"  th:if="${danger}">
+                                    <span th:text="${danger}"></span>
+                            </div>    
+                                
+                            <br>
+                            <div class="input-group input-group-sm-lg mb-3 mx-5" style="width: 85%;">
+                                <span class="input-group-text" id="inputGroup-sizing-sm" style="background-color: #f9f9f9; border: none;">Foto Barang</span>
+                                <input type="file" accept="image/png, image/jpeg" name="image" class="form-control" id="barang-foto-input" style="box-shadow: none; background-color: #f9f9f9; border: none; padding-left: 60px;" placeholder="Masukkan Foto" required>
+                            </div>
+
+                            <div class="input-group input-group-sm-lg mb-3 mx-5" style="width: 85%;">
+                                <span class="input-group-text" id="inputGroup-sizing-sm" style="background-color: #f9f9f9; border: none; padding-right: 17px;">Nama Barang</span>
+                                <input type="text" class="form-control" id="barang-name-input" name="pname" style="box-shadow: none; background-color: #f9f9f9; border: none; padding-left: 30px;" placeholder="Nama Barang" >
+                            </div>
+
+                            <div class="input-group input-group-sm-lg mb-3 mx-5" style="width: 85%;">
+                                <span class="input-group-text" id="inputGroup-sizing-sm" style="background-color: #f9f9f9; border: none; padding-right: 17px;">Deskripsi </span>
+                                <textarea class="form-control" name="desc" id="barang-desc-input" style="box-shadow: none;padding-left: 70px;border: none;word-wrap: break-word; background-color: #f9f9f9; overflow-y: scroll;" placeholder="Deskripsi Barang" ></textarea>
+                            </div>
+
+                            <div class="input-group input-group-sm-lg mb-3 mx-5" style="width: 85%;">
+                                <span class="input-group-text" id="inputGroup-sizing-sm" style="background-color: #f9f9f9; border: none; padding-right: 17px;">Harga Barang</span>
+                                <input type="number" name="price" class="form-control" id="barang-harga-input" style="box-shadow: none; background-color: #f9f9f9; border: none; padding-left: 27px;" placeholder="Masukkan Harga" >
+                            </div>
+                            <input type="hidden" th:value="${session.id}" name="id_user" readonly/>
+
+                            <button type="submit" class="btn-feedback-submit" id="btn-feedback-submit" style="float: right; width: 20%; margin-right: 20px;">Submit</button>
+                            <br><br>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div th:replace="../includes/base  :: footer"></div>
+    </body>
+</html>
