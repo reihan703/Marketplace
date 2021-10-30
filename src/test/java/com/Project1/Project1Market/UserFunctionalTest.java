@@ -21,7 +21,7 @@ import org.springframework.boot.test.mock.mockito.MockBean;
  * @author Victorio Adam
  */
 @SpringBootTest
-public class UserIntegrationTest {
+public class UserFunctionalTest {
     @Autowired
     UserService userService;
     

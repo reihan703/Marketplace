@@ -23,7 +23,7 @@ import org.springframework.mock.web.MockMultipartFile;
 import org.springframework.web.multipart.MultipartFile;
 
 @SpringBootTest
-public class BuyProductIntegrationTest {
+public class BuyProductFunctionalTest {
     
     @InjectMocks
     @Autowired
