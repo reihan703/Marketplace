@@ -109,7 +109,7 @@ public class SellProductFunctionalTest {
     
     //Delete
     @Test
-    public void DeleteBuyProduct(){
+    public void DeleteSellProduct(){
         long id = 1;
         doNothing().when(sellRepository).deleteById(id);
         productSellService.delete(id);
